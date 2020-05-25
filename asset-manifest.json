@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/reactjs-php-crud/static/css/main.27fd15f6.chunk.css",
+    "main.js": "/reactjs-php-crud/static/js/main.aac6fe75.chunk.js",
+    "main.js.map": "/reactjs-php-crud/static/js/main.aac6fe75.chunk.js.map",
+    "runtime-main.js": "/reactjs-php-crud/static/js/runtime-main.6dc2437d.js",
+    "runtime-main.js.map": "/reactjs-php-crud/static/js/runtime-main.6dc2437d.js.map",
+    "static/css/2.829c9cb5.chunk.css": "/reactjs-php-crud/static/css/2.829c9cb5.chunk.css",
+    "static/js/2.79139c79.chunk.js": "/reactjs-php-crud/static/js/2.79139c79.chunk.js",
+    "static/js/2.79139c79.chunk.js.map": "/reactjs-php-crud/static/js/2.79139c79.chunk.js.map",
+    "index.html": "/reactjs-php-crud/index.html",
+    "precache-manifest.9b89d360115019d7cfc472d9ab9d3208.js": "/reactjs-php-crud/precache-manifest.9b89d360115019d7cfc472d9ab9d3208.js",
+    "service-worker.js": "/reactjs-php-crud/service-worker.js",
+    "static/css/2.829c9cb5.chunk.css.map": "/reactjs-php-crud/static/css/2.829c9cb5.chunk.css.map",
+    "static/css/main.27fd15f6.chunk.css.map": "/reactjs-php-crud/static/css/main.27fd15f6.chunk.css.map",
+    "static/js/2.79139c79.chunk.js.LICENSE.txt": "/reactjs-php-crud/static/js/2.79139c79.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6dc2437d.js",
+    "static/css/2.829c9cb5.chunk.css",
+    "static/js/2.79139c79.chunk.js",
+    "static/css/main.27fd15f6.chunk.css",
+    "static/js/main.aac6fe75.chunk.js"
+  ]
+}
