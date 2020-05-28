@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Axios from "axios";
+import { setAddContext } from "../App";
 
 const AddUser = () => {
+  const setAdd = useContext(setAddContext);
   const [users, setUsers] = useState({ name: "", email: "" });
   const formHandler = (e) => {
     e.preventDefault();
@@ -10,6 +12,7 @@ const AddUser = () => {
       ({ data }) => {
         if (data.success === 1) {
           setUsers({ name: "", email: "" });
+          setAdd(true);
           alert(data.msg);
         } else alert(data.msg);
       }

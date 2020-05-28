@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Axios from "axios";
+import { addContext } from "../App";
 
 const UserList = () => {
+  const add = useContext(addContext);
+  let nameRef = React.createRef();
+  let emailRef = React.createRef();
   const init = { id: "", isEdit: false };
   const [users, setUsers] = useState([]);
-  const [euser, setEuser] = useState({ name: "", email: "" });
   const [edit, setEdit] = useState(init);
   const editHandler = (Id) => {
     setEdit({ id: Id, isEdit: true });
@@ -28,7 +31,34 @@ const UserList = () => {
       }
     );
   };
-  const saveHandler = () => {};
+  const saveHandler = (Id) => {
+    console.log(nameRef.current.value);
+    console.log(emailRef.current.value);
+    Axios.post("http://localhost:8080/php-react/update.php", {
+      id: Id,
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+    })
+      .then(({ data }) => {
+        if (data.success === 1) {
+          let eusers = users.map((user) => {
+            if (user.id === Id) {
+              user.user_name = nameRef.current.value;
+              user.user_email = emailRef.current.value;
+              setEdit(init);
+              return user;
+            }
+            return user;
+          });
+          setUsers(eusers);
+        } else {
+          alert(data.msg);
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const cancelHandler = () => {
     setEdit({ id: -1, isEdit: false });
   };
@@ -38,7 +68,7 @@ const UserList = () => {
         setUsers(data.users.reverse());
       });
     });
-  }, [edit.isEdit, users]);
+  }, [edit.isEdit, users.length, add]);
   return (
     <div className="text-center">
       <h1 className="font-weight-light">UserList</h1>
@@ -53,27 +83,23 @@ const UserList = () => {
         </thead>
         <tbody>
           {users.map((user, index) =>
-            user.id == edit.id ? (
+            user.id === edit.id ? (
               <tr key={user.id}>
                 <td>{index + 1}</td>
                 <td>
                   <input
                     type="text"
                     name="e-name"
-                    value={user.user_name}
-                    onChange={(e) =>
-                      setEuser({ ...euser, name: e.target.value })
-                    }
+                    ref={nameRef}
+                    defaultValue={user.user_name}
                   />
                 </td>
                 <td>
                   <input
                     type="text"
-                    name="e-name"
-                    value={user.user_email}
-                    onChange={(e) =>
-                      setEuser({ ...euser, email: e.target.value })
-                    }
+                    name="e-email"
+                    ref={emailRef}
+                    defaultValue={user.user_email}
                   />
                 </td>
                 <td>
