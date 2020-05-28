@@ -8,7 +8,7 @@ const AddUser = () => {
   const [users, setUsers] = useState({ name: "", email: "" });
   const formHandler = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:8080/php-react/add-users.php", users).then(
+    Axios.post("http://ranvijay.epizy.com/php-react/add-users.php", users).then(
       ({ data }) => {
         if (data.success === 1) {
           setUsers({ name: "", email: "" });
