@@ -14,7 +14,7 @@ const UserList = () => {
     setEdit({ id: Id, isEdit: true });
   };
   const deleteHandler = (Id) => {
-    Axios.post("http://ranvijay.epizy.com/php-react/delete.php", { id: Id }).then(
+    Axios.post("http://localhost:8080/php-react/delete.php", { id: Id }).then(
       ({ data }) => {
         //console.log(data);
         console.log(data.success);
@@ -34,7 +34,7 @@ const UserList = () => {
   const saveHandler = (Id) => {
     console.log(nameRef.current.value);
     console.log(emailRef.current.value);
-    Axios.post("http://ranvijay.epizy.com/php-react/update.php", {
+    Axios.post("http://localhost:8080/php-react/update.php", {
       id: Id,
       name: nameRef.current.value,
       email: emailRef.current.value,
@@ -63,7 +63,7 @@ const UserList = () => {
     setEdit({ id: -1, isEdit: false });
   };
   useEffect(() => {
-    fetch("http://ranvijay.epizy.com/php-react/user-list.php").then((response) => {
+    fetch("http://localhost:8080/php-react/user-list.php").then((response) => {
       response.json().then((data) => {
         setUsers(data.users.reverse());
       });
